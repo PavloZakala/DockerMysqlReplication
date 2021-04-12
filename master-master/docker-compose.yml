@@ -1,0 +1,36 @@
+version: '3'
+services:
+  mysql1:
+    image: mysql:5.7
+    env_file:
+      - ./master1/mysql_env.env
+    container_name: "mysql1"
+    restart: "no"
+    ports:
+      - 4406:3306
+    volumes:
+      - ./master1/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
+      - ./master1/data:/var/lib/mysql
+      - ./master1/backup:/backup
+    networks:
+      - overlay
+
+  mysql2:
+    image: mysql:5.7
+    env_file:
+      - ./master2/mysql_env.env
+    container_name: "mysql2"
+    restart: "no"
+    ports:
+      - 5506:3306
+    links:
+      - mysql1
+    volumes:
+        - ./master2/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
+        - ./master2/data:/var/lib/mysql
+        - ./master2/backup:/backup
+    networks:
+      - overlay
+
+networks:
+  overlay:
