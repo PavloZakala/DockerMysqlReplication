@@ -9,11 +9,14 @@ docker-compose exec mysql_master bash
 
 export MYSQL_PWD=111; mysql -u root
 
+GRANT REPLICATION SLAVE ON *.* TO "mydb_slave_user"@"%" IDENTIFIED BY "mydb_slave_pwd"; FLUSH PRIVILEGES;
+
 SHOW MASTER STATUS
 > File: mysql-bin.000003
 > Position: 600
 cat /etc/hosts
 > ip: 172.18.0.2
+
 
 ------------------- Slave --------------------
 
@@ -39,3 +42,5 @@ slave:
 USE mydb;
 SHOW tables;
 SELECT * FROM code;
+
+P.S. If: mysql: [Warning] World-writable config file '/etc/mysql/conf.d/mysql.conf.cnf' is ignored. then make file real-only https://github.com/cytopia/devilbox/issues/212
