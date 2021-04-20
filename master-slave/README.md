@@ -1,7 +1,22 @@
-Docker MySQL master-slave replication 
+# Docker MySQL master-slave replication
 
-docker-compose build
-docker-compose up -d
+[sourses](https://github.com/vbabak/docker-mysql-master-slave)
+
+## Dependenses
+With method is needed pre-installed [Docker](https://www.docker.com/).
+
+## Run
+Clone repository, open master-slave folder in console and run:
+```bash
+> docker-compose build
+> docker-compose up -d
+```
+
+After with docker created 2 Docker container. Check this using a comand:
+```bash 
+> docker ps
+```
+
 
 ------------------- Master -------------------
 
