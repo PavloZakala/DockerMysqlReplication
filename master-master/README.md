@@ -21,7 +21,9 @@ Open MySQL in the master container:
 ```bash
 > export MYSQL_PWD=111; mysql -u root
 ```
-and run:
+If you have a message `[Warning] World-writable config file '/etc/mysql/conf.d/mysql.conf.cnf' is ignored` check P.S. section of this readme file.
+
+Run:
 ```mysql
 mysql> source /backup/initdb.sql
 ```
@@ -38,6 +40,8 @@ Open up the second console in the `./master2/` and repeat the same steps
 > docker exec mysql2 bash
 > export MYSQL_PWD=111; mysql -u root
 ```
+Also if you have a message `[Warning] World-writable config file '/etc/mysql/conf.d/mysql.conf.cnf' is ignored` check P.S. section of this readme file.
+
 ```mysql
 mysql> source /backup/initdb.sql
 ```
@@ -86,3 +90,10 @@ Mysql1:
 mysql> USE mydata;
 mysql> SHOW TABLES;
 ```
+
+## P.S. 
+You may see `[Warning] World-writable config file '/etc/mysql/conf.d/mysql.conf.cnf' is ignored` in the console. This message relates to Attributes in the `.cnf` file. Try to shut down docker containers with this command:
+```bash 
+> docker-compose down
+```
+and change properties of the `.cnf` file by setting the read-only change mode. After that, repeat all the steps.
