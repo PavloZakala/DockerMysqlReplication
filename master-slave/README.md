@@ -37,7 +37,9 @@ After that, open MySQL in the master container:
 ```bash
 > export MYSQL_PWD=111; mysql -u root
 ```
-and 
+If you have a message `[Warning] World-writable config file '/etc/mysql/conf.d/mysql.conf.cnf' is ignored` check section P.S. in this readme file.
+
+Run:
 ```mysql
 mysql> GRANT REPLICATION SLAVE ON \*.\* TO "mydb_slave_user"@"%" IDENTIFIED BY "mydb_slave_pwd"; FLUSH PRIVILEGES;
 mysql> SHOW MASTER STATUS;
@@ -63,7 +65,9 @@ Open MySQL in the slave container:
 ```bash
 export MYSQL_PWD=111; mysql -u root
 ```
-and set up replication:
+If you have a message `[Warning] World-writable config file '/etc/mysql/conf.d/mysql.conf.cnf' is ignored` check section P.S. in this readme file.
+
+Set up replication:
 ```mysql
 mysql> CHANGE MASTER TO MASTER_HOST='{master IP address}', MASTER_USER='mydb_slave_user', MASTER_PASSWORD='mydb_slave_pwd', MASTER_LOG_FILE='{master File name}', MASTER_LOG_POS={master Position}; 
 mysql> START SLAVE;
@@ -84,7 +88,8 @@ mysql> USE mydb;
 mysql> SHOW tables;
 mysql> SELECT * FROM code;
 ```
-P.S. You may see `[Warning] World-writable config file '/etc/mysql/conf.d/mysql.conf.cnf' is ignored` in the console. This message relates to Attributes in the `.cnf` file. Try to shut down docker containers with this command:
+## P.S. 
+You may see `[Warning] World-writable config file '/etc/mysql/conf.d/mysql.conf.cnf' is ignored` in the console. This message relates to Attributes in the `.cnf` file. Try to shut down docker containers with this command:
 ```bash 
 > docker-compose down
 ```
