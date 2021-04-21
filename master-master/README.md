@@ -14,7 +14,7 @@ Clone the repository, then open the `master-master` folder in the console and ru
 
 If the mysql1 container is loaded correctly, you can open it with this command:
 ```bash 
-> docker exec mysql1 bash
+> docker -it exec mysql1 bash
 ```
 Open MySQL in the master container:
 
@@ -37,7 +37,7 @@ Notice the following lines in the command output:
 Open up the second console in the `./master2/` and repeat the same steps
 
 ```bash 
-> docker exec mysql2 bash
+> docker -it exec mysql2 bash
 > export MYSQL_PWD=111; mysql -u root
 ```
 Also if you have a message `[Warning] World-writable config file '/etc/mysql/conf.d/mysql.conf.cnf' is ignored` check P.S. section of this readme file.
