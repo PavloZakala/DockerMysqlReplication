@@ -1,6 +1,6 @@
 # Docker MySQL master-slave replication
 
-[sourses](https://github.com/vbabak/docker-mysql-master-slave)
+[sources](https://github.com/vbabak/docker-mysql-master-slave)
 
 ## Prerequisites
 Pre-installed [Docker](https://www.docker.com/).
