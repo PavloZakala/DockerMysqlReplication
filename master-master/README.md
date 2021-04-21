@@ -27,7 +27,7 @@ mysql> source /backup/initdb.sql
 ```
 
 Notice the following lines in the command output:
- * File: mysql-bin.000003
+ * File: \"mysql-bin.000003\"
  * Position: 777
 
 
@@ -42,7 +42,7 @@ Open up the second console in the `./master2/` and repeat the same steps
 mysql> source /backup/initdb.sql
 ```
 Also notice the following lines in the command output:
- * File: mysql-bin.000003
+ * File: \"mysql-bin.000003\"
  * Position: 777
 
 The next step is:
